@@ -1,0 +1,23 @@
+import java.util.Random;
+import javax.swing.JButton;
+public class TController
+{
+  private final int SCREENW = 300;
+  private final int SCREENH = SCREENW;
+  private final int SCALE = 2;
+  private final int NODESPLITW = SCREENW/12;
+  private final int NODESPLITH = SCREENH/12;
+  private final int SEED = new Random().nextInt();
+  private final boolean DRAW = true;
+  TGen myGen = new TGen(SEED);
+  TPanel mainPanel = new TPanel(SCALE,myGen);
+  World myWorld = new World(SCREENW,SCREENH,SCALE,NODESPLITW,NODESPLITH,myGen,mainPanel,DRAW);
+  TFrame mainFrame = new TFrame(SCREENW*SCALE+304,SCREENH*SCALE+34,mainPanel,myWorld);
+  JButton exitButton = new JButton("Exit");
+  SplashScreen loadScreen = new SplashScreen();
+  public TController()
+  {
+    myWorld.addTerrains();
+    new Thread(myWorld).start();
+  }
+}

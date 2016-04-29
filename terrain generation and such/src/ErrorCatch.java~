@@ -1,0 +1,28 @@
+import java.util.Set;
+public class ErrorCatch implements Runnable
+{
+  TPanel worldPanel;
+  World world;
+  public ErrorCatch(TPanel worldPanel,World world)
+  {
+    this.worldPanel=worldPanel;
+    this.world=world;
+  }
+  public void run()
+  {
+    while(true)
+    {
+      Set<Thread> threadSet = Thread.getAllStackTraces().keySet();
+      Thread[] threadArray = threadSet.toArray(new Thread[threadSet.size()]);
+      System.out.println("Errors Detected, waiting to recreate, threads running:"+threadArray.length);
+      if(threadArray.length<18)
+      {
+        System.out.println("Errors Detected, recreating world");
+        new Thread(world).start();
+        world.errorBool = false;
+        break;
+      }
+      try{Thread.sleep(1000);}catch(InterruptedException e){}
+    }
+  }
+}

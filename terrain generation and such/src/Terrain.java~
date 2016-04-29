@@ -1,0 +1,40 @@
+import java.awt.Color;
+public class Terrain
+{
+  private int terrainChance = 0;
+  private Color terrainColor = Color.PINK;
+  private String terrainName = "EMPTY";
+  public Terrain()
+  {
+  }
+  public Terrain(int chance,Color color,String name)
+  {
+    terrainChance = chance;
+    terrainColor = color;
+    terrainName = name;
+  }
+  public int getChance()
+  {
+    return terrainChance;
+  }
+  public Color getColor()
+  {
+    return terrainColor;
+  }
+  public String getName()
+  {
+    return terrainName;
+  }
+  public void setChance(int chance)
+  {
+    terrainChance = chance;
+  }
+  public void setColor(Color color)
+  {
+    terrainColor = color;
+  }
+  public void setName(String name)
+  {
+    terrainName=name;
+  }
+}

@@ -1,0 +1,38 @@
+import java.awt.Graphics;
+import javax.swing.JWindow;
+import java.awt.Rectangle;
+public class TWindow extends JWindow
+{
+  private int worldScale = 0;
+  Terrain[][] world = {{new Terrain()}};
+  TGen myGen;
+  public TPanel(int wid,int hei,int scale,TGen myGen)
+  {
+    super();
+    this.myGen = myGen;
+    setWorldScale(scale);
+    setBounds(new Rectangle(wid,hei));
+    setVisible(true);
+  }
+  public void paintComponent(Graphics g)
+  {
+    super.paintComponent(g);
+    for(int x = 0;x<world.length;x++)
+    {
+      for(int y = 0;y<world[0].length;y++)
+      {
+        g.setColor(myGen.getColor(world[y][x].getName()));
+        g.fillRect(x*worldScale,y*worldScale,worldScale,worldScale);
+      }
+    }
+  }
+  public void drawAgain(Terrain[][] world)
+  {
+    this.world = world;
+    repaint();
+  }
+  public void setWorldScale(int scale)
+  {
+    worldScale = scale;
+  }
+}
