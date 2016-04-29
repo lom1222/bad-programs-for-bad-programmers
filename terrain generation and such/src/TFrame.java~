@@ -83,7 +83,7 @@ public class TFrame extends JFrame implements MouseListener, MouseMotionListener
     }
     else if(actionCode.equals("NEW WORLD"))
     {
-      myWorld.resetWorld();
+      new Thread(myWorld).start();
     }
   }
 }

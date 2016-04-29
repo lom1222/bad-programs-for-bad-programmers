@@ -2,13 +2,15 @@ import java.awt.Color;
 public class SampleTerrain extends Terrain
 {
   private int terrainChance = 0;
+  private int spreadChance = 0;
   private Color terrainColor = Color.PINK;
   private String terrainName = "EMPTY";
-  public SampleTerrain(int chance, Color color,String name)
+  public SampleTerrain(int chance,int spread, Color color,String name)
   {
     terrainChance = chance;
     terrainColor = color;
     terrainName = name;
+    spreadChance = spread;
   }
   public Color getColor()
   {
@@ -21,5 +23,9 @@ public class SampleTerrain extends Terrain
   public String getName()
   {
     return terrainName;
+  }
+  public int getSpread()
+  {
+    return spreadChance;
   }
 }

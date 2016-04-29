@@ -200,7 +200,7 @@ public class Chunk
       tempxy = xysave.split(" ");
       for(int y = 0;y<tempxy.length-1;y+=2)
       {
-        if(myGen.nextInt(3)==2)
+        if(myGen.nextInt(2)==1)
         {
           chunk[Integer.parseInt(tempxy[0+y])][Integer.parseInt(tempxy[1+y])].setName("SAND");
         }
@@ -263,7 +263,7 @@ public class Chunk
   public void generateBaseTerrain()
   {
     boolean worldBuilding = false;
-    int totalChance = myGen.getTotalChance();
+    int totalSpread = myGen.getTotalChance();
     int currentChance = 0;
     for(int x =0;x<screenW/nodeSplitW;x++)
     {
@@ -308,8 +308,8 @@ public class Chunk
       tempxy = xysave.split(" ");
       for(int x = 0;x<tempxy.length-1;x+=4)
       {
-        currentChance = myGen.getChance(chunk[Integer.parseInt(tempxy[0+x])][Integer.parseInt(tempxy[1+x])].getName());
-        if(myGen.nextInt(totalChance)>=((totalChance-currentChance)))
+        currentChance = myGen.getSpread(chunk[Integer.parseInt(tempxy[0+x])][Integer.parseInt(tempxy[1+x])].getName());
+        if(myGen.nextInt(totalSpread)>=((totalSpread-currentChance)))
         {
           chunk[Integer.parseInt(tempxy[2+x])][Integer.parseInt(tempxy[3+x])].setName(chunk[Integer.parseInt(tempxy[0+x])][Integer.parseInt(tempxy[1+x])].getName());
         }

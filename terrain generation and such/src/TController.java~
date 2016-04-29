@@ -4,9 +4,9 @@ public class TController
 {
   private final int SCREENW = 300;
   private final int SCREENH = SCREENW;
-  private final int SCALE = 2;
-  private final int NODESPLITW = SCREENW/12;
-  private final int NODESPLITH = SCREENH/12;
+  private final int SCALE = 600/SCREENW;
+  private final int NODESPLITW = SCREENW/9;
+  private final int NODESPLITH = SCREENH/9;
   private final int SEED = new Random().nextInt();
   private final boolean DRAW = true;
   TGen myGen = new TGen(SEED);

@@ -32,6 +32,7 @@ public class Chunk
   
   int chunkx = 0;
   int chunky = 0;
+  
   public Chunk()
   {
     chunk = emptyChunk();
